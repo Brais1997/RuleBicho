@@ -1,7 +1,10 @@
+package Menu;
+
 
 import java.awt.Color;
-
-
+import Comprobacion.*;
+import javax.swing.JOptionPane;
+import Paquete.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,15 +15,35 @@ import java.awt.Color;
  * @author propa
  */
 public class menuApuestas extends javax.swing.JFrame {
-   
-
+      NoseComoQuieras nom =new NoseComoQuieras();
+    int numeroAleatorio;
     int posiblesNumeros[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36};
     int posicion;
-
+     public void compara(){
+     numeroAleatorio=(int) (Math.random()*36+1); 
+   if(numeroAleatorio==posicion){
+       JOptionPane.showMessageDialog(null,"Saiu o numero"+numeroAleatorio);
+       JOptionPane.showMessageDialog(null, "Gañache");
+   }else{
+       JOptionPane.showMessageDialog(null,"Saiu o numero"+numeroAleatorio);
+       JOptionPane.showMessageDialog(null,"Intentao de novo");
+   }
+   nom.Escribir(numeroAleatorio);
+     }
+     
     public menuApuestas() {
-
+     
         initComponents();
         getContentPane().setBackground(new Color(3,64,7));
+   
+    }
+
+    public int getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
     }
     
 
@@ -70,6 +93,7 @@ public class menuApuestas extends javax.swing.JFrame {
         jButton49 = new javax.swing.JButton();
         jButton50 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 51));
@@ -444,6 +468,13 @@ public class menuApuestas extends javax.swing.JFrame {
             }
         });
 
+        jButton24.setText("Comezar");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -523,10 +554,15 @@ public class menuApuestas extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton29))
                             .addComponent(jButton50))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton30)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton31)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton31))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -576,9 +612,15 @@ public class menuApuestas extends javax.swing.JFrame {
                     .addComponent(jButton29)
                     .addComponent(jButton30)
                     .addComponent(jButton31))
-                .addGap(34, 34, 34)
-                .addComponent(jButton50)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jButton50)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -726,40 +768,19 @@ public class menuApuestas extends javax.swing.JFrame {
        posicion = posiblesNumeros[0];
     }//GEN-LAST:event_jButton50ActionPerformed
 
-   
-    
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+       compara();
+    }//GEN-LAST:event_jButton24ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menuApuestas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menuApuestas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menuApuestas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menuApuestas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+   
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new menuApuestas().setVisible(true);
+     
             }
         });
     }
@@ -781,6 +802,7 @@ public class menuApuestas extends javax.swing.JFrame {
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
@@ -804,7 +826,6 @@ public class menuApuestas extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     // End of variables declaration//GEN-END:variables
 
-    private void JOptionPane(String el_botón_funciona) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   
     }
-}
+
